@@ -1,7 +1,7 @@
 # sub_domain
 利用API查询目标子域名、利用DNS区域泄露查找目标子域名，并于字典取差积再爆破获得目标最终的子域名列表
 
-####Use
+###Use
 subdomain.py -d target.com
 ```
 python3 subdomains.py -h
@@ -14,7 +14,7 @@ optional arguments:
   -d DOMAIN   -d target,default out_file in 'result' file
 ```
 
-####result
+###result
 结果保存在result/target/
 ```
 root@ubuntu:/home/kevinsa/PycharmProjects/domain# tree result/
@@ -37,7 +37,7 @@ result/
 ```
 
 ###1.API查询目标子域名
-####1.1AXFR
+###1.1AXFR
 AXFR.py
 https://crt.sh/
 
