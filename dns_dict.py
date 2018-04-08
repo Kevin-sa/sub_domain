@@ -61,7 +61,7 @@ class Dns_dict(object):
         domain_dicts = list(set(domain_dicts))
 
         domain_dicts = list(set(domain_dicts).difference(set(domain_sub_exit)))
-
+        
         return list(domain_dicts)
 
     def _query(self, sub):
