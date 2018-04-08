@@ -1,7 +1,8 @@
 # sub_domain
+
 利用API查询目标子域名、利用DNS区域泄露查找目标子域名，并于字典取差积再爆破获得目标最终的子域名列表
 
-###Use
+#Use
 subdomain.py -d target.com
 ```
 python3 subdomains.py -h
