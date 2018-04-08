@@ -63,9 +63,11 @@ hncc.edu.cn.		86400	IN	NS	dns2.hncc.edu.cn.
 #### 等待更新......
 * 字典爆破泛解析问题
     * 思路1：dns.resolver.query()请求一个不可能存在的子域名并于字典内域名查询结果对比；
-    * 思路2：字典完成后，随机获取5个子域名进行http请求判断
-    
+    * 思路2：字典完成后，随机获取5个子域名进行http请求判断  
 * 字典爆破线程
-    * ```queue.Queue threading.Thread()```
+    * ```queue.Queue threading.Thread()```
 
+
+#### 项目参考
+https://github.com/ring04h/wydomain
 
