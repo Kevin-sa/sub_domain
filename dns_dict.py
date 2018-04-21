@@ -1,7 +1,6 @@
 #encoding: utf-8
 
-import dns.resolver, os, sys, gevent, optparse, json, threading, queue,re, itertools
-from gevent import monkey
+import dns.resolver, os, sys,  optparse, json, threading, queue,re, itertools
 from config import *
 from AXFR import AXFR
 from dns_zone import Dns_zone
