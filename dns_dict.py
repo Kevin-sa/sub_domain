@@ -2,8 +2,7 @@
 
 import dns.resolver, os, sys,  optparse, json, threading, queue,re, itertools
 from config import *
-from AXFR import AXFR
-from dns_zone import Dns_zone
+
 
 #dictionary and api result subtraction
 
@@ -16,6 +15,7 @@ class Dns_dict(object):
         self.abspath = os.path.abspath(os.path.dirname(__file__))
         self.threading = 10
         self.result = []
+        self.sub_dict = queue.Queue()
 
 
     def _load_sub(self):
@@ -52,16 +52,17 @@ class Dns_dict(object):
             for lines in f.readlines():
                 #domain are case insensitive
                 lines = lines.strip().lower()
-                if lines == '':
-                    logging.error('domain_dicts is null')
-                    continue
+                #if lines == '':
+                #    logging.error('domain_dicts is null')
+                #    continue
                 domain_dicts.append(lines)
 
         domain_dicts = list(set(domain_dicts))
-
         domain_dicts = list(set(domain_dicts).difference(set(domain_sub_exit)))
-        
-        return list(domain_dicts)
+        for sub_dicts in domain_dicts:
+            self.sub_dict.put(sub_dicts)
+
+        return True
 
     def _query(self, sub):
         try:
@@ -77,10 +78,20 @@ class Dns_dict(object):
 
 
     def _scan(self):
-        dicts = self._load_dicts()
-        for sub in dicts:
+        while not self.sub_dict.empty():
+            sub = self.sub_dict.get()
             subdomain = self._query(sub)
             if subdomain:
                 self.result.append(subdomain)
+
+
+    def _run(self):
+        self._load_sub()
+        self._load_dicts()
+        for i in range(self.threading):
+            t = threading.Thread(target=self._scan())
+            t.start()
+            t.join()
+
         return list(set(self.result))
 
