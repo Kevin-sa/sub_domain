@@ -54,7 +54,7 @@ def run(args):
     #sub_dicts
     #dictionary and api result subtraction
     logging.info("starting dicts")
-    result = Dns_dict(domain)._scan()
+    result = Dns_dict(domain)._run()
     out_file(mkdir_path, 'dict_sub.json', result)
     logging.info('Finish dict_sub.json')
 
