@@ -46,6 +46,10 @@ https://crt.sh/
 findsubdomains.py
 https://findsubdomains.com/subdomains-of
 
+#### 1.3 hackertarget
+hackertarget.py
+
+
 #### 2.DNS zone transfer
 ```
 ; <<>> DiG 9.10.3-P4-Ubuntu <<>> @dns2.hncc.edu.cn axfr hncc.edu.cn
