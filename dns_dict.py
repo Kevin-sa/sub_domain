@@ -86,6 +86,17 @@ class Dns_dict(object):
 
 
     def _run(self):
+        
+        try:
+            pan_parsing = 'subdoamin-aaa.{}'.format(self.domain)
+            pan_answer = self.resolver.query(pan_parsing, 'A')
+            for i in pan_answer.response.answer:
+                if len(i)>0:
+                    logging.error("exit pan-parsing")
+                    return
+        except:
+            pass
+
         self._load_sub()
         self._load_dicts()
         for i in range(self.threading):
