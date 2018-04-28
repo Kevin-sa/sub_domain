@@ -51,6 +51,12 @@ def run(args):
     out_file(mkdir_path, 'findsubdomains.json', result)
     logging.info('Finish findsubdomains.json')
 
+    #hackertarget
+    logging.info("starting hacktarget...")
+    result = Hackertarget(domain)._get()
+    out_file(mkdir_path, 'hackertarget.json', result)
+    logging.info('Finish findsubdomains.json')
+
     #sub_dicts
     #dictionary and api result subtraction
     logging.info("starting dicts")
